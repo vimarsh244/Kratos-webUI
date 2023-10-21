@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+
+    <script
+      type="text/javascript"
+      src="https://cdn.jsdelivr.net/npm/roslib@1/build/roslib.min.js"
+    ></script>
+
+    <script
+      type="text/javascript"
+      src="https://cdnjs.cloudflare.com/ajax/libs/nipplejs/0.7.3/nipplejs.js"
+    ></script>
+
+    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/water.css"> -->
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> 
+    <!-- for fancy charting -->
+    <script src="chart.js"></script>
+
+    <script src="code.js"></script>
+    <script type="text/javascript" type="text/javascript">
+      
+    </script>
+  </head>
+
+  <body>
+    <h1>Kratos FTW</h1>
+    <p>Connection status: <span id="status"></span></p>
+    <p>Published message on /txt_msg: <span id="msg"></span></p>
+
+    <p>Published message on /imu: <span id="subodom"></span></p>
+
+
+    <div id="zone_joystick" style="position: relative"></div>
+
+    <div id = "charting_tools">
+        <canvas id="myChart"></canvas>
+    </div>
+
+  </body>
+</html>
