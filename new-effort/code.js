@@ -70,14 +70,16 @@ var odom_listener = new ROSLIB.Topic({
 
     // Update the global data array with new data.
     sub_data.push(public_linear_imu_x);
+    console.log(sub_data);
 
     // Limit the number of data points displayed (e.g., keep the last 50 data points).
-    // if (data.length > 50000) {
-    //     data.shift();
-    // }
-
-    // Update the chart with the new data.
-    chart.update();
+    if (sub_data.length > 5000) {
+        sub_data.shift();
+    }
+    Plotly.update(chart, {
+        x: [sub_data.map((_, index) => index)], // X-axis data (time)
+        y: [sub_data], // Y-axis data
+    });
 
 });
 
