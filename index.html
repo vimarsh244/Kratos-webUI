@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <title>Kratos BS</title>
+    <!-- Add Bootstrap CSS link here -->
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+
+    <!-- Add Bootstrap JS and jQuery scripts here -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/roslib@1/build/roslib.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/eventemitter2@6.4/lib/eventemitter2.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/keyboardteleopjs@1.0.4/build/keyboardteleop.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/nipplejs@0.10.1/dist/nipplejs.min.js"></script>
+    <script src="static/arm.js"></script>
+    
+  </head>
+  <body class="bg-light">
+    <div class="container">
+      <h1>Hello, Bootstrap 4!</h1>
+      <p>This is a basic Bootstrap 4 template.</p>
+    </div>
+    <!-- SPEED -->
+    <div class="row">
+      <div class="col-md-4"></div>
+      <div class="col-md-4">
+        <label for="robot-speed">
+          <strong>Robot speed</strong>
+        </label>
+        <input
+          type="range"
+          min="15"
+          max="80"
+          class="custom-range"
+          id="robot-speed"
+        />
+      </div>
+      <div class="col-md-4"></div>
+    </div>
+
+    <!-- VIDEO -->
+    <div class="row my-4">
+      <div class="col d-flex justify-content-center">
+        <img src="" class="p-1 bg-dark" alt="" id="video" />
+      </div>
+    </div>
+
+    <!-- JOYSTICK -->
+    <div class="row my-4">
+      <div class="col">
+        <div
+          class="d-flex justify-content-center"
+          style="width: 210px; height: 210px"
+        >
+          <div id="joystick"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- INFO -->
+    <div class="row my-4">
+      <div class="col-md-2"></div>
+      <div class="col-md-8">
+        <div class="alert alert-success">
+          <h4 class="alert-heading">ROS + Bootstrap interface demo</h4>
+          <ul>
+            <li>set speed using a slider</li>
+            <li>use joystick or WASD keys on keyboard to move</li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-md-2"></div>
+    </div>
+
+    
+  </body>
+</html>
