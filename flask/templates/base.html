@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Kratos Control Panel</title>
+
+    {#
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/water.css">
+    #}
+
+    
+
+
+
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="{{ url_for('home') }}">Home</a></li>
+            <li><a href="{{ url_for('about') }}">About</a></li>
+            <li><a href="{{ url_for('contact') }}">Contact</a></li>
+        </ul>
+    </nav>
+    <hr>
+    <h1>Kratos FTW</h1>
+
+    {% block content %}{% endblock %}
+
+    <script src= {{ url_for('static', filename='roslib.min.js') }}> </script>
+    <script src= {{ url_for('static', filename='nipplejs.js') }}> </script>
+    <script src= {{ url_for('static', filename='plotly-latest.min.js') }}> </script>
+    <script src= {{ url_for('static', filename='eventemitter2.js') }}> </script>
+    <script src= {{ url_for('static', filename='code.js') }}> </script>
+    <script src= {{ url_for('static', filename='chart.js') }}> </script>
+    
+</body>
+<footer>
+</footer>
+</html>
