@@ -30,14 +30,13 @@ class ExampleLayout extends React.Component {
           Displayed as <code>[x, y, w, h]</code>:
           <div className="columns">{this.stringifyLayout()}</div>
         </div>
+        <button onClick={ShowcaseLayout.onAddItem}>Add Item</button>
         <ShowcaseLayout onLayoutChange={this.onLayoutChange} />
       </div>
     );
   }
 }
 
-// const contentDiv = document.getElementById("root");
-// const gridProps = window.gridProps || {};
-// ReactDOM.render(React.createElement(ExampleLayout, gridProps), contentDiv);
-
-export default App;
+const contentDiv = document.getElementById("root");
+const gridProps = window.gridProps || {};
+ReactDOM.render(React.createElement(ExampleLayout, gridProps), contentDiv);
