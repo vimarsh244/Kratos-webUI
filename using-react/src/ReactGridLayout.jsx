@@ -4,6 +4,7 @@ import "react-grid-layout/css/styles.css";
 import "react-resizable/css/styles.css";
 
 import "./App.css";
+import RosTopicEcho from "./components/RosTopicEcho";
 
 const ResponsiveReactGridLayout = WidthProvider(Responsive);
 
@@ -87,7 +88,9 @@ const ReactGridLayout = () => {
               >
                 x
               </button>
-              <div>{widget.i}</div>
+              <div>{widget.i}
+              <RosTopicEcho />
+              </div>
             </div>
           );
         })}
