@@ -1,24 +1,27 @@
 import React, { useState, useEffect } from 'react';
-import { Row, Col, Container, Button } from "react-bootstrap";
-import Config from "../config/config";
 
-function RosTopicEcho() {
-  const [apiData, setApiData] = useState('');
-  let ros_msg = "/";
-  let ros_subscribed_data = "";
-  const [inputValue, setInputValue] = useState('');
+const RosTopicEcho = () => {
   const [ros, setRos] = useState(null);
-  const [connected, setConnected] = useState(false);
+  const [ros_msg_value, setRosMsgValue] = useState(null);
+  const [Connected, setConnected] = useState(false);
+  const [linear_velocity, setLinearVelocity] = useState(0);
+  const [angular_velocity, setAngularVelocity] = useState(0);
+  const [inputValue, setInputValue] = useState('');
+  const [apiData, setApiData] = useState('');
 
   const initConnection = () => {
     const newRos = new window.ROSLIB.Ros();
+    setRos(newRos);
+
     newRos.on("connection", () => {
       console.log("Connection established");
       setConnected(true);
     });
+
     newRos.on("close", () => {
       console.log("Connection is closed");
       setConnected(false);
+
       setTimeout(() => {
         try {
           newRos.connect(`ws://${Config.ROSBRIDGE_SERVER_IP}:${Config.ROSBRIDGE_SERVER_PORT}`);
@@ -27,42 +30,43 @@ function RosTopicEcho() {
         }
       }, Config.RECONNECTION_TIMER);
     });
+
     try {
       newRos.connect(`ws://${Config.ROSBRIDGE_SERVER_IP}:${Config.ROSBRIDGE_SERVER_PORT}`);
     } catch (error) {
       console.log("Connection problem");
     }
-    setRos(newRos);
-  }
+  };
 
+  
   const getRobotState = () => {
     if (ros) {
       const subscriber = new window.ROSLIB.Topic({
-        ros,
+        ros: ros,
         name: "/cmd_vel",
         messageType: "geometry_msgs/Twist",
       });
+  
       subscriber.subscribe((message) => {
-        ros_subscribed_data = JSON.stringify(message);        
-        setApiData(ros_subscribed_data);
-        console.log(ros_subscribed_data);
-
+        setRosMsgValue(JSON.stringify(message));
+        console.log(ros_msg_value);
       });
     }
-  }
+  };
+  
 
   const handleButtonClick = () => {
-    // Make an API request here using fetch or Axios
-    // For this example, I'll just simulate a delay and set some data.
-    ros_msg = {inputValue}.inputValue;
-    console.log(ros_msg);
-  }
+    setTimeout(() => {
+      setApiData(`Data from API for ${inputValue}`);
+    }, 1000);
+    console.log(apiData);
+  };
 
   useEffect(() => {
     initConnection();
     getRobotState();
   }, []);
-  
+
   return (
     <div>
       <input
@@ -72,9 +76,9 @@ function RosTopicEcho() {
         placeholder="Enter something"
       />
       <button onClick={handleButtonClick}>Fetch Data</button>
-      <p>{apiData}</p>
+      <p>{ros_msg_value}</p>
     </div>
   );
-}
+};
 
 export default RosTopicEcho;
