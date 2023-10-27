@@ -5,13 +5,15 @@ import "react-resizable/css/styles.css";
 
 import "./App.css";
 import RosTopicEcho from "./components/RosTopicEcho";
+import ToggleConnect from "./components/ToggleConnect";
+import ActualRosMsgSub from "./components/ActualRosMsgSub";
 
 const ResponsiveReactGridLayout = WidthProvider(Responsive);
 
 const ReactGridLayout = () => {
   const [layouts, setLayouts] = useState(null);
   const [widgetArray, setWidgetArray] = useState([
-    { i: "widget1", x: 0, y: 0, w: 2, h: 1 },
+    { i: "widget1", x: 0, y: 0, w: 4, h: 4 },
     { i: "widget2", x: 2, y: 2, w: 2, h: 1 },
     { i: "widget3", x: 4, y: 4, w: 2, h: 1 },
   ]);
@@ -31,7 +33,7 @@ const ReactGridLayout = () => {
   const handleAdd = () => {
     setWidgetArray([
       ...widgetArray,
-      { i: "widget" + (widgetArray.length + 1), x: 0, y: 0, w: 2, h: 1 },
+      { i: "widget" + (widgetArray.length + 1), x: 4, y: 2, w: 2, h: 1 },
     ]);
   };
 
@@ -88,9 +90,7 @@ const ReactGridLayout = () => {
               >
                 x
               </button>
-              <div>{widget.i}
-              <RosTopicEcho />
-              </div>
+              <div>{index === 0 ? <ToggleConnect /> : <ActualRosMsgSub />}</div>
             </div>
           );
         })}

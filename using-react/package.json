@@ -15,7 +15,11 @@
     "react-bootstrap": "^2.9.1",
     "react-dom": "^18.2.0",
     "react-grid-layout": "^1.4.2",
-    "react-resizable": "^3.0.5"
+    "react-json-view": "^1.21.3",
+    "react-resizable": "^3.0.5",
+    "react-ros": "^0.10.0",
+    "roslib": "^1.3.0",
+    "rosreact": "ltiseni94/rosreact"
   },
   "devDependencies": {
     "@types/react": "^18.2.15",
